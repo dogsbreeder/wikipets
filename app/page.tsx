@@ -97,7 +97,15 @@ export default function Home() {
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {dynamicFeatured.map((business) => (
-              <BusinessCard key={business.id} business={business} />
+              <BusinessCard 
+                key={business.id} 
+                business={{
+                  ...business,
+                  full_address: business.address || "",
+                  reviews: business.reviewsCount,
+                  photo: business.photo ? business.photo : "/images/logo.png",
+                }} 
+              />
             ))}
           </div>
         </div>
