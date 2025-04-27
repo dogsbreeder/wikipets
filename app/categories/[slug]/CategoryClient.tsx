@@ -66,17 +66,7 @@ export default function CategoryClient({ category, businesses }: CategoryClientP
                 {businesses.map((business) => (
                   <BusinessCard 
                     key={business.id}
-                    id={business.id}
-                    name={business.name}
-                    category={business.category}
-                    address={business.address}
-                    phone={business.phone}
-                    website={business.website}
-                    photo={business.photo || undefined}
-                    rating={business.rating}
-                    reviewsCount={business.reviewsCount}
-                    latitude={business.latitude}
-                    longitude={business.longitude}
+                    business={business}
                   />
                 ))}
               </div>
