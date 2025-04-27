@@ -115,17 +115,12 @@ export default function MunicipalityPage() {
               {businesses.map((business) => (
                 <BusinessCard 
                   key={business.id}
-                  id={business.id}
-                  name={business.name}
-                  category={business.category}
-                  address={business.address}
-                  phone={business.phone}
-                  website={business.website}
-                  photo={business.photo || undefined}
-                  rating={business.rating}
-                  reviewsCount={business.reviewsCount}
-                  latitude={business.latitude || undefined}
-                  longitude={business.longitude || undefined}
+                  business={{
+                    ...business,
+                    full_address: business.address || "",
+                    reviews: business.reviewsCount,
+                    photo: business.photo ? business.photo : "/images/logo.png",
+                  }}
                 />
               ))}
             </div>
