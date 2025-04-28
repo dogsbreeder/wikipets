@@ -34,11 +34,11 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Marketing Button */}
-          <div className="flex flex-col items-end space-y-4">
+          {/* Marketing Button and Sitemap - Centered */}
+          <div className="flex flex-col items-center space-y-4">
             <Link 
               href="/kontakt/" 
-              className="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-md transition-colors duration-200"
+              className="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-md transition-colors duration-200 w-full md:w-auto text-center"
             >
               Marketing
             </Link>
