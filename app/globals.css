@@ -5,6 +5,13 @@
   padding: 0 1rem;
 }
 
+/* Responsive container padding */
+@media (max-width: 640px) {
+  .container-custom {
+    padding: 0 0.75rem;
+  }
+}
+
 /* Add card styling */
 .card {
   background-color: white;
@@ -45,4 +52,35 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5rem;
+}
+
+/* Responsive typography */
+@media (max-width: 640px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  h3 {
+    font-size: 1.25rem;
+  }
+  p {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile touch targets */
+@media (max-width: 640px) {
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Smooth transitions */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 } 

@@ -3,8 +3,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navItems = {
     sr: [
       { title: 'Početna', href: '/' },
@@ -24,7 +26,6 @@ const Navbar = () => {
     ]
   };
 
-  // Prikazuj samo srpsku verziju linkova
   const currentItems = navItems['sr'];
 
   return (
@@ -46,10 +47,51 @@ const Navbar = () => {
           <span className="text-2xl font-bold text-primary">WikiPets</span>
         </Link>
         
-        <div className="flex space-x-6 items-center">
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex space-x-6 items-center">
           {currentItems.map((item, index) => (
             <NavLink key={index} href={item.href}>{item.title}</NavLink>
           ))}
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden text-gray-700 hover:text-primary focus:outline-none"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            {isMenuOpen ? (
+              <path d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            )}
+          </svg>
+        </button>
+      </div>
+
+      {/* Mobile Navigation */}
+      <div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'} bg-white shadow-lg`}>
+        <div className="container-custom py-4">
+          <div className="flex flex-col space-y-4">
+            {currentItems.map((item, index) => (
+              <NavLink 
+                key={index} 
+                href={item.href}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item.title}
+              </NavLink>
+            ))}
+          </div>
         </div>
       </div>
     </motion.nav>
@@ -57,8 +99,20 @@ const Navbar = () => {
 };
 
 // Helper NavLink component
-const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
-  <Link href={href} className="text-gray-700 hover:text-primary transition-colors duration-200">
+const NavLink = ({ 
+  href, 
+  children, 
+  onClick 
+}: { 
+  href: string; 
+  children: React.ReactNode;
+  onClick?: () => void;
+}) => (
+  <Link 
+    href={href} 
+    className="text-gray-700 hover:text-primary transition-colors duration-200 block py-2"
+    onClick={onClick}
+  >
     {children}
   </Link>
 );
