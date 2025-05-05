@@ -11,6 +11,11 @@ export const metadata: Metadata = {
   title: 'WikiPets - Direktorijum Poslovanja za Kućne Ljubimce u Beogradu',
   description: 'Sveobuhvatan direktorijum poslovanja sa kućnim ljubimcima u Beogradu, Srbija, uključujući prodavnice za kućne ljubimce, veterinarske usluge i više.',
   keywords: 'kućni ljubimci, beograd, srbija, prodavnica za kućne ljubimce, veterinar, usluge za kućne ljubimce, poslovanje sa kućnim ljubimcima',
+  verification: {
+    other: {
+      'msvalidate.01': '6644A96842A0EA4002BA88B5EA3D6D2A',
+    },
+  },
   openGraph: {
     title: 'WikiPets - Direktorijum Poslovanja za Kućne Ljubimce u Beogradu',
     description: 'Sveobuhvatan direktorijum poslovanja sa kućnim ljubimcima u Beogradu, Srbija, uključujući prodavnice za kućne ljubimce, veterinarske usluge i više.',
@@ -44,6 +49,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="sr">
+      <head>
+        <meta name="msvalidate.01" content="6644A96842A0EA4002BA88B5EA3D6D2A" />
+      </head>
       <body className={inter.className}>
         <Navbar />
         {children}
