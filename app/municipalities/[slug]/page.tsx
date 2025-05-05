@@ -1,6 +1,5 @@
 "use client";
 
-import { useParams } from 'next/navigation';
 import { useState } from 'react';
 import BusinessCard from '../../components/BusinessCard';
 import Navbar from '../../components/Navbar';
@@ -58,9 +57,12 @@ for (const municipality of MUNICIPALITIES) {
   municipality.businessCount = municipalityBusinesses.length;
 }
 
-export default function MunicipalityPage() {
-  const params = useParams();
-  const slug = params.slug as string;
+export default function MunicipalityPage({
+  params,
+}: {
+  params: { slug: string }
+}) {
+  const { slug } = params;
   
   // Find municipality by slug
   const municipality = MUNICIPALITIES.find(m => m.slug === slug);
@@ -92,11 +94,11 @@ export default function MunicipalityPage() {
       <section className="bg-primary text-white py-12">
         <div className="container-custom">
           <div className="flex items-center justify-center mb-4">
-            <span className="text-5xl mr-4">{municipality.icon}</span>
-            <h1 className="text-3xl md:text-4xl font-bold">{municipality.name}</h1>
+            <span className="text-5xl mr-4">{municipality?.icon}</span>
+            <h1 className="text-3xl md:text-4xl font-bold">{municipality?.name}</h1>
           </div>
           <p className="text-center text-xl opacity-90">
-            Poslovanja sa kućnim ljubimcima u opštini {municipality.name}
+            Poslovanja sa kućnim ljubimcima u opštini {municipality?.name}
           </p>
         </div>
       </section>
@@ -137,14 +139,14 @@ export default function MunicipalityPage() {
       {/* Additional Information Section */}
       <section className="py-12 bg-gray-50">
         <div className="container-custom">
-          <h2 className="text-2xl font-bold mb-6">O opštini {municipality.name}</h2>
+          <h2 className="text-2xl font-bold mb-6">O opštini {municipality?.name}</h2>
           <div className="prose max-w-none">
             <p>
-              Opština {municipality.name} je jedan od ključnih delova Beograda sa raznovrsnim uslugama za kućne ljubimce.
+              Opština {municipality?.name} je jedan od ključnih delova Beograda sa raznovrsnim uslugama za kućne ljubimce.
               Ovde možete pronaći sve što je potrebno za brigu o vašim ljubimcima, od prodavnica hrane i opreme do veterinarskih usluga.
             </p>
             <p>
-              Pogledajte listu iznad za kompletnu ponudu poslovanja vezanih za kućne ljubimce u opštini {municipality.name}.
+              Pogledajte listu iznad za kompletnu ponudu poslovanja vezanih za kućne ljubimce u opštini {municipality?.name}.
               Svako poslovanje prikazuje ključne informacije poput adrese, kontakt podataka i prosečne ocene korisnika.
             </p>
           </div>
